@@ -10,10 +10,7 @@ import WebKit
 
 class CustomTableViewCell: UITableViewCell {
     
-    
-   
-    @IBOutlet weak var webview: WKWebView!
-    //@IBOutlet weak var Images:UIImageView!
+    @IBOutlet weak var Images:UIImageView!
     @IBOutlet weak var baslik:UILabel!
     
 }

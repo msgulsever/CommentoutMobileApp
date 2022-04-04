@@ -36,31 +36,26 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nuT-zi-kjS">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZbC-ss-Kp5">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="219"/>
-                                                    <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="219" id="CMX-5d-0mg"/>
-                                                        <constraint firstAttribute="width" constant="414" id="Yqs-co-aAJ"/>
+                                                        <constraint firstAttribute="height" constant="219" id="J2Z-OS-wie"/>
+                                                        <constraint firstAttribute="width" constant="414" id="dB8-rQ-jMI"/>
                                                     </constraints>
-                                                    <wkWebViewConfiguration key="configuration">
-                                                        <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                                                        <wkPreferences key="preferences"/>
-                                                    </wkWebViewConfiguration>
-                                                </wkWebView>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="nuT-zi-kjS" firstAttribute="centerX" secondItem="ncG-Vt-lWT" secondAttribute="centerX" id="8Wd-7W-tGr"/>
+                                                <constraint firstItem="ZbC-ss-Kp5" firstAttribute="top" secondItem="flX-M3-JkQ" secondAttribute="top" id="GOO-A2-7E8"/>
+                                                <constraint firstAttribute="trailing" secondItem="ZbC-ss-Kp5" secondAttribute="trailing" id="KU3-Ql-HAZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ncG-Vt-lWT" secondAttribute="bottom" constant="-7" id="WoS-qD-3pU"/>
-                                                <constraint firstItem="nuT-zi-kjS" firstAttribute="leading" secondItem="flX-M3-JkQ" secondAttribute="leading" id="bnM-W8-F3i"/>
+                                                <constraint firstItem="ncG-Vt-lWT" firstAttribute="top" secondItem="ZbC-ss-Kp5" secondAttribute="bottom" id="YcV-Xm-Tuk"/>
+                                                <constraint firstItem="ZbC-ss-Kp5" firstAttribute="leading" secondItem="flX-M3-JkQ" secondAttribute="leading" id="hEz-aO-v2i"/>
                                                 <constraint firstItem="ncG-Vt-lWT" firstAttribute="leading" secondItem="flX-M3-JkQ" secondAttribute="leadingMargin" id="j2e-fs-9X3"/>
-                                                <constraint firstItem="nuT-zi-kjS" firstAttribute="top" secondItem="flX-M3-JkQ" secondAttribute="top" id="sKa-5L-mT2"/>
-                                                <constraint firstItem="ncG-Vt-lWT" firstAttribute="top" secondItem="nuT-zi-kjS" secondAttribute="bottom" id="x7q-AG-TKg"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="Images" destination="ZbC-ss-Kp5" id="xKg-3I-C9p"/>
                                             <outlet property="baslik" destination="ncG-Vt-lWT" id="cDO-Vc-Bpj"/>
-                                            <outlet property="webview" destination="nuT-zi-kjS" id="Q7j-Qh-HWz"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

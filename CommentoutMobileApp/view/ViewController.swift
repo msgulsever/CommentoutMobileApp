@@ -50,10 +50,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
         let haberListModel = self.HaberListViewModel.haberAtIndex(indexPath.row)
-        
         cell.baslik.text = haberListModel.tittle
-        cell.webview.load(URLRequest(url: URL(string: haberListModel.habertutucu.mainImage.url)! as URL))
-        //cell.Images.load(urlString: haberListModel.habertutucu.mainImage.url)
+        cell.Images.load(urlString: haberListModel.habertutucu.mainImage.url)
 
         return cell
         
