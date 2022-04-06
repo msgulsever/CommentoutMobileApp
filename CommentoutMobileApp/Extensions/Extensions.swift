@@ -8,9 +8,6 @@
 import Foundation
 import UIKit
 
-
-
-
 var imageCahce = NSCache<AnyObject,AnyObject>()
 extension UIImageView {
     func load(urlString : String) {

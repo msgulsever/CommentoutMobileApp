@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HaberElement: Codable {
+struct NewsElement: Codable {
     let uuid, title, summary, content: String
     let mainImage: MainImage
     let shareURL: String?
@@ -26,6 +26,6 @@ struct MainImage: Codable {
     let height, width: Int
 }
 
-typealias Haber = [HaberElement]
+typealias New = [NewsElement]
 
 

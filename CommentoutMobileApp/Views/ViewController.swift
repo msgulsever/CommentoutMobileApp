@@ -12,8 +12,8 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBOutlet weak var table: UITableView!
     
-    private var HaberListViewModel : haberListViewModel!
-    var secilenhaber : HaberViewModel?
+    private var HaberListViewModel : NewsListViewModel!
+    var secilenhaber : NewViewModel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +29,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
         Webservice().downloadinfos(url: url) { (list) in
             if let list = list {
                 
-                self.HaberListViewModel = haberListViewModel(haberlisttutucu: list)
+                self.HaberListViewModel = NewsListViewModel(NewListHolder: list)
                 
                 DispatchQueue.main.async {
                     self.table.reloadData()
@@ -49,22 +49,22 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
         
-        let haberListModel = self.HaberListViewModel.haberAtIndex(indexPath.row)
+        let haberListModel = self.HaberListViewModel.NewsAtIndex(indexPath.row)
         cell.baslik.text = haberListModel.tittle
-        cell.Images.load(urlString: haberListModel.habertutucu.mainImage.url)
+        cell.Images.load(urlString: haberListModel.NewHolder.mainImage.url)
 
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        secilenhaber = self.HaberListViewModel.secilenhaber(indexPath.row)
+        secilenhaber = self.HaberListViewModel.ChoosenNew(indexPath.row)
                 self.performSegue(withIdentifier: "gec", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "gec" {
                 let destinationVC = segue.destination as! SecondViewController
-                destinationVC.secilenhaber2 = secilenhaber
+                destinationVC.ChoosenNews1 = secilenhaber
             }
         }
     
