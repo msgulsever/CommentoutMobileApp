@@ -63,7 +63,7 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "gec" {
-                let destinationVC = segue.destination as! SecondViewController
+                let destinationVC = segue.destination as! NewsViewModel
                 destinationVC.ChoosenNews1 = secilenhaber
             }
         }

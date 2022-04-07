@@ -15,12 +15,12 @@ struct NewsListViewModel {
         return self.NewListHolder.count
     }
     func NewsAtIndex(_ index: Int) -> NewViewModel {
-        let haber = self.NewListHolder[index]
-        return NewViewModel(NewHolder: haber)
+        let New = self.NewListHolder[index]
+        return NewViewModel(NewHolder: New)
     }
     func ChoosenNew(_ index: Int) -> NewViewModel {
-        let secilen = self.NewListHolder[index]
-        return NewViewModel(NewHolder: secilen)
+        let Choosen = self.NewListHolder[index]
+        return NewViewModel(NewHolder: Choosen)
     }
 }
 
