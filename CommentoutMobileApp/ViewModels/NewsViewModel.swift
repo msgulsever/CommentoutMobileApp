@@ -10,14 +10,6 @@ import Foundation
 struct NewsListViewModel {
     
     let NewListHolder : [NewsElement]
-    
-    func numberOfRowsInSection() -> Int {
-        return self.NewListHolder.count
-    }
-    func NewsAtIndex(_ index: Int) -> NewViewModel {
-        let New = self.NewListHolder[index]
-        return NewViewModel(NewHolder: New)
-    }
     func ChoosenNew(_ index: Int) -> NewViewModel {
         let Choosen = self.NewListHolder[index]
         return NewViewModel(NewHolder: Choosen)

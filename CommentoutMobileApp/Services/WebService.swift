@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+/*
 class Webservice {
     
     func downloadinfos (url : URL, completion : @escaping ([NewsElement]?) -> ()) {
@@ -25,3 +25,4 @@ class Webservice {
         }.resume()
     }
 }
+*/

@@ -12,59 +12,44 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
     
     @IBOutlet weak var table: UITableView!
     
-    private var HaberListViewModel : NewsListViewModel!
-    var secilenhaber : NewViewModel?
+    var HaberListViewModel : NewsListViewModel!
+    var ChoosenNew : NewViewModel?
+    var WebService = WebServiceWithAlamofire()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         table.delegate = self
         table.dataSource = self
+        WebService.vc = self
+        WebService.GetAllDataAF()
         
-       getData()
-        
-    }
-    func getData() {
-        let url = URL(string: "http://www.mocky.io/v2/59cc13f726000062106b773d")!
-        Webservice().downloadinfos(url: url) { (list) in
-            if let list = list {
-                
-                self.HaberListViewModel = NewsListViewModel(NewListHolder: list)
-                
-                DispatchQueue.main.async {
-                    self.table.reloadData()
-                }
-                
-            
-            }
-            
-            
-        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.HaberListViewModel == nil ? 0 : self.HaberListViewModel.numberOfRowsInSection()
+        return self.WebService.Holder.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! CustomTableViewCell
-        
-        let haberListModel = self.HaberListViewModel.NewsAtIndex(indexPath.row)
-        cell.baslik.text = haberListModel.tittle
-        cell.Images.load(urlString: haberListModel.NewHolder.mainImage.url)
+        let NewsListModel = self.WebService.Holder[indexPath.row]
+        cell.baslik.text = NewsListModel.title
+        cell.Images.load(urlString: NewsListModel.mainImage.url)
 
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        secilenhaber = self.HaberListViewModel.ChoosenNew(indexPath.row)
+        self.HaberListViewModel = NewsListViewModel(NewListHolder: WebService.Holder)
+        ChoosenNew = HaberListViewModel.ChoosenNew(indexPath.row)
                 self.performSegue(withIdentifier: "gec", sender: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "gec" {
                 let destinationVC = segue.destination as! NewsViewModel
-                destinationVC.ChoosenNews1 = secilenhaber
+                destinationVC.ChoosenNews1 = ChoosenNew
             }
         }
     
@@ -85,9 +70,5 @@ class ViewController: UIViewController,UITableViewDataSource,UITableViewDelegate
             
         }
     }
-    
-    
-
-
 }
 
